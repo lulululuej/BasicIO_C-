@@ -62,16 +62,16 @@ int main()
   inputStream_realandint >> y;
   inputStream_realandint >> x;
   std::cout.width(10);
-  std::cout << "The real is: " << std::right << std::setw(11) << std::setfill('.') << round_to(y, 0.001) << endl;
+  std::cout << "The real is: " << std::right << std::setw(11) << std::setfill('.') << setprecision(3) << std::fixed << y << endl;
   std::cout.width(10);
   std::cout << "The integer is: " << std::right << std::setw(8) << std::setfill('.') << x << endl;
 
   /* 5 */
-  cout << "Enter an character: ";
+  cout << "Enter a character: ";
   std::getline(std::cin, inputStr);
   std::istringstream inputStream_c(inputStr);
   inputStream_c >> c;
-  std::cout << "You entered: " << c << endl;
+  std::cout << "You entered: " << c[0] << endl;
 
   /* 6 */
   cout << "Enter a word: ";
@@ -81,7 +81,7 @@ int main()
   std::cout << "The word '" << c << "' has " << strlen(c) << " character(s)." << endl;
 
   /* 7 */
-  cout << "Enter a integer and a word: " << endl;
+  cout << "Enter a integer and a word: ";
   std::getline(std::cin, inputStr);
   std::istringstream inputStream_intandchar(inputStr);
   inputStream_intandchar >> x;
@@ -92,7 +92,7 @@ int main()
   cout << "Enter an character and a word: ";
   std::getline(std::cin, inputStr);
   std::istringstream inputStream_charandword(inputStr);
-  inputStream_charandword >> c;
+  inputStream_charandword >> c[0];
   inputStream_charandword >> inputStr;
   std::cout << "You entered the string \"" << inputStr << "\" and the character '" << c << "'." << endl;
 
@@ -119,7 +119,13 @@ int main()
   /* 12 */
   cout << "Enter three words: ";
   std::getline(std::cin, inputStr);
-  std::cout << "You entered '" << inputStr << "'" << endl;
+  std::istringstream inputStream_words(inputStr);
+  inputStream_words >> c;
+  std::cout << "You entered '" << c << " ";
+  inputStream_words >> c;
+  std::cout << c << " ";
+  inputStream_words >> c;
+  std::cout << c << "'" << endl;
 
   return 0;
 }
